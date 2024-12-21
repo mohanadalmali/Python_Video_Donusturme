@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Dönüştürme</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Video Dönüştürme Uygulaması</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <label for="video">Video Dosyası Yükle:</label>
+            <input type="file" name="video" id="video" required>
+
+            <label for="resolution">Çözünürlük Seç:</label>
+            <select name="resolution" id="resolution" required>
+                <option value="720p">720p (1280x720)</option>
+                <option value="480p">480p (854x480)</option>
+                <option value="360p">360p (640x360)</option>
+            </select>
+
+            <label for="quality">Kalite (0-51):</label>
+            <input type="number" name="quality" id="quality" min="0" max="51" value="23" required>
+
+            <button type="submit">Dönüştür</button>
+        </form>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>
